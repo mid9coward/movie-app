@@ -1,0 +1,12 @@
+.trending-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .trending-card .MuiCard-root {
+    width: 180%;
+    max-width: 600px; /* Đặt kích thước lớn hơn cho thẻ trending */
+    height: auto;
+  }
