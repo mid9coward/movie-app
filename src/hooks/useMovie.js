@@ -7,14 +7,14 @@ const useMovie = () => {
   function setMovie(data) {
     setState((prevState) => ({
       ...prevState,
-      movieList: data,
+      movieList: data, 
     }));
   }
 
   return {
     setMovie,
     searchMovies,
-    movieList: state.movieList,
+    movieList: state.movieList, 
     isLoading: state.isLoading,
   };
 };

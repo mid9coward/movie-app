@@ -5,10 +5,8 @@ import MCard from "../components/MCard";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 
-//APIKEY TRONG ENV
 
 function FavoritePage() {
-  // let { favMovies, setfavMovies } = useFavMovies();
   let list = JSON.parse(localStorage.getItem("fav"));
 
   return (

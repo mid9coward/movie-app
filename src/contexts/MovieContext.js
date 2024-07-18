@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import apiService from "../api/apiService";
+import apiService from "../api/apiServices";
 
 const MovieContext = createContext();
 

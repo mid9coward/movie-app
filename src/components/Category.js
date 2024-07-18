@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import apiService from "../api/apiService";
+import apiService from "../api/apiServices";
 import { API_KEY } from "../api/config";
 import Grid from "@mui/material/Grid";
 import MCard from "./MCard";
@@ -11,7 +11,7 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemButton from "@mui/material/ListItemButton";
 import Skeleton from "@mui/material/Skeleton";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import useMovie from "./hooks/useMovie";
+import useMovie from "../hooks/useMovie";
 
 const yearList = [
   { id: 2000, label: "2000" },
@@ -31,7 +31,7 @@ export default function Category() {
   const [yearId, setYearId] = useState(2000);
   const { setMovie, movieList, isLoading } = useMovie();
   const [searchResults, setSearchResults] = useState([]);
-
+  
   const prevGenreId = useRef();
   const prevYearId = useRef();
 
@@ -122,7 +122,9 @@ export default function Category() {
                   noWrap: true,
                   fontSize: 12,
                   lineHeight: "16px",
-                  color: openGenres ? "rgba(0,0,0,0)" : "rgba(255,255,255,0.5)",
+                  color: openGenres
+                    ? "rgba(0,0,0,0)"
+                    : "rgba(255,255,255,0.5)",
                 }}
                 sx={{ my: 0 }}
               />
@@ -143,10 +145,7 @@ export default function Category() {
                 >
                   <ListItemText
                     primary={genre.name}
-                    primaryTypographyProps={{
-                      fontSize: 14,
-                      fontWeight: "medium",
-                    }}
+                    primaryTypographyProps={{ fontSize: 14, fontWeight: "medium" }}
                   />
                 </ListItemButton>
               ))}
@@ -194,16 +193,10 @@ export default function Category() {
             </ListItemButton>
             {openYear &&
               yearList.map((year) => (
-                <ListItemButton
-                  key={year.id}
-                  onClick={() => setYearId(year.id)}
-                >
+                <ListItemButton key={year.id} onClick={() => setYearId(year.id)}>
                   <ListItemText
                     primary={year.label}
-                    primaryTypographyProps={{
-                      fontSize: 14,
-                      fontWeight: "medium",
-                    }}
+                    primaryTypographyProps={{ fontSize: 14, fontWeight: "medium" }}
                   />
                 </ListItemButton>
               ))}
@@ -217,13 +210,11 @@ export default function Category() {
                   {detailSkeleton}
                 </Grid>
               ))
-            : (searchResults.length > 0 ? searchResults : movieList).map(
-                (item) => (
-                  <Grid item xs={6} md={3} key={item.id}>
-                    <MCard item={item} />
-                  </Grid>
-                )
-              )}
+            : (searchResults.length > 0 ? searchResults : movieList).map((item) => (
+                <Grid item xs={6} md={3} key={item.id}>
+                  <MCard item={item} />
+                </Grid>
+              ))}
         </Grid>
       </Stack>
     </>

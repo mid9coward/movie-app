@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import apiService from "../api/apiService";
+import apiService from "../api/apiServices";
 import { API_KEY } from "../api/config";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";

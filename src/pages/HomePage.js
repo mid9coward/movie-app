@@ -1,32 +1,9 @@
-import React, { useEffect, useState } from "react";
-import apiService from "../api/apiService";
-import { API_KEY } from "../api/config";
+import React from "react";
 import Grid from "@mui/material/Grid";
 import TrendingCardGroup from "../components/TrendingCardGroup";
 import Category from "../components/Category";
 
 function HomePage() {
-  const [loadingTrending, setLoadingTrending] = useState();
-  const [trendingList, setTrendingList] = useState([]);
-  const [cutInitial, setcutInitial] = useState();
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoadingTrending(true);
-        const res = await apiService.get(
-          `/trending/all/day?api_key=${API_KEY}`
-        );
-        const result = res.data.results;
-        setTrendingList(result);
-        setcutInitial([...result].splice(16, 4));
-        setLoadingTrending(false);
-      } catch (e) {
-        console.log(e.message);
-      }
-    };
-    fetchData();
-  }, []);
-
   return (
     <>
       <Grid
@@ -38,14 +15,10 @@ function HomePage() {
         }}
       >
         <Grid item direction="column" container>
-          <TrendingCardGroup
-            trendingList={trendingList}
-            cutInitial={cutInitial}
-            loadingTrending={loadingTrending}
-          />
+          <TrendingCardGroup />
         </Grid>
 
-        <Grid item direction="column" mt={5} container>
+        <Grid item direction="column" mt={4} container>
           <Category />
         </Grid>
       </Grid>
