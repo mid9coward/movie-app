@@ -9,7 +9,7 @@ import Menu from "@mui/material/Menu";
 import MSearchBar from "../components/MSearchBar";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
-import CameraIndoorIcon from "@mui/icons-material/CameraIndoor";
+import ChairIcon from "@mui/icons-material/Chair";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import StarIcon from "@mui/icons-material/Star";
 import { useAuth } from "../contexts/AuthContext";
@@ -155,7 +155,7 @@ export default function PrimarySearchAppBar() {
             component={Link}
             to="/"
             onClick={() => navigate("/")}
-            children={<CameraIndoorIcon />}
+            children={<ChairIcon />}
           />
           <MSearchBar />
           <Box sx={{ flexGrow: 1 }} />
