@@ -31,7 +31,7 @@ export default function Category() {
   const [yearId, setYearId] = useState(2000);
   const { setMovie, movieList, isLoading } = useMovie();
   const [searchResults, setSearchResults] = useState([]);
-  
+
   const prevGenreId = useRef();
   const prevYearId = useRef();
 
@@ -122,9 +122,7 @@ export default function Category() {
                   noWrap: true,
                   fontSize: 12,
                   lineHeight: "16px",
-                  color: openGenres
-                    ? "rgba(0,0,0,0)"
-                    : "rgba(255,255,255,0.5)",
+                  color: openGenres ? "rgba(0,0,0,0)" : "rgba(255,255,255,0.5)",
                 }}
                 sx={{ my: 0 }}
               />
@@ -142,13 +140,25 @@ export default function Category() {
                 <ListItemButton
                   key={genre.id}
                   onClick={() => setGenreId(genre.id)}
+                  sx={{
+                    py: 0,
+                    minHeight: 40,
+                    color: "rgba(255,255,255,.8)",
+                    "&:focus": {
+                      backgroundColor: "rgba(225,0,0,0.1)",
+                    },
+                  }}
                 >
                   <ListItemText
                     primary={genre.name}
-                    primaryTypographyProps={{ fontSize: 14, fontWeight: "medium" }}
+                    primaryTypographyProps={{
+                      fontSize: 16,
+                      fontWeight: "light",
+                    }}
                   />
                 </ListItemButton>
               ))}
+            <Divider sx={{ marginTop: 3 }} />
           </Box>
 
           {/* Year */}
@@ -157,7 +167,7 @@ export default function Category() {
               alignItems="flex-start"
               onClick={() => setOpenYear(!openYear)}
               sx={{
-                pr: 2,
+                // pr: 2,
                 pt: 2.5,
                 pb: openYear ? 0 : 2.5,
                 "&:hover, &:focus": {
@@ -173,7 +183,7 @@ export default function Category() {
                   lineHeight: "20px",
                   mb: "2px",
                 }}
-                secondary="2000, 2010, 2020, 2021, 2022, 2023"
+                secondary="Lastest and oldest edition."
                 secondaryTypographyProps={{
                   noWrap: true,
                   fontSize: 12,
@@ -184,7 +194,7 @@ export default function Category() {
               />
               <KeyboardArrowDownIcon
                 sx={{
-                  mr: -1,
+                  // mr: -1,
                   opacity: 0,
                   transform: openYear ? "rotate(-180deg)" : "rotate(0)",
                   transition: "0.2s",
@@ -193,28 +203,38 @@ export default function Category() {
             </ListItemButton>
             {openYear &&
               yearList.map((year) => (
-                <ListItemButton key={year.id} onClick={() => setYearId(year.id)}>
+                <ListItemButton
+                  key={year.id}
+                  onClick={() => setYearId(year.id)}
+                  sx={{ py: 0, minHeight: 40, color: "rgba(255,255,255,.8)" }}
+                >
                   <ListItemText
                     primary={year.label}
-                    primaryTypographyProps={{ fontSize: 14, fontWeight: "medium" }}
+                    primaryTypographyProps={{
+                      fontSize: 16,
+                      fontWeight: "light",
+                    }}
                   />
                 </ListItemButton>
               ))}
+            <Divider sx={{ marginTop: 3 }} />
           </Box>
         </Stack>
 
-        <Grid container spacing={2}>
+        <Grid container direction="row" spacing={2} mt={2}>
           {loading || isLoading
             ? placeholder.map((_, index) => (
-                <Grid item xs={6} md={3} key={index}>
+                <Grid item xs={10} sm={6} md={4} lg={3}>
                   {detailSkeleton}
                 </Grid>
               ))
-            : (searchResults.length > 0 ? searchResults : movieList).map((item) => (
-                <Grid item xs={6} md={3} key={item.id}>
-                  <MCard item={item} />
-                </Grid>
-              ))}
+            : (searchResults.length > 0 ? searchResults : movieList).map(
+                (item) => (
+                  <Grid item xs={10} sm={6} md={4} lg={3}>
+                    <MCard key={item.id} item={item} />
+                  </Grid>
+                )
+              )}
         </Grid>
       </Stack>
     </>

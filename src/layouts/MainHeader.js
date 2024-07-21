@@ -13,9 +13,10 @@ import CameraIndoorIcon from "@mui/icons-material/CameraIndoor";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import StarIcon from "@mui/icons-material/Star";
 import { useAuth } from "../contexts/AuthContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 export default function PrimarySearchAppBar() {
+  let location = useLocation();
   let auth = useAuth();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -73,7 +74,7 @@ export default function PrimarySearchAppBar() {
           >
             {auth.user}
           </Button>
-          <Button color="inherit" onClick={handleLogout}>
+          <Button color="inherit" onClick={() => handleLogout()}>
             Logout
           </Button>
         </>
@@ -82,6 +83,7 @@ export default function PrimarySearchAppBar() {
           color="inherit"
           component={Link}
           to="/form"
+          state={{ backgroundLocation: location, from: location }}
           onClick={handleMenuClose}
         >
           Login

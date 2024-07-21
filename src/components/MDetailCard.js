@@ -13,7 +13,7 @@ import IconButton from "@mui/material/IconButton";
 import Skeleton from "@mui/material/Skeleton";
 
 function MDetailCard({ movieDetail, loading }) {
-  const { movieId } = useParams();
+  let { movieId } = useParams();
   const [movieError, setMovieError] = useState();
   const [isFavorited, setIsFavorited] = useState(false);
 
@@ -101,7 +101,9 @@ function MDetailCard({ movieDetail, loading }) {
                   size="large"
                   children={<StarIcon fontSize="large" />}
                   sx={{
-                    backgroundColor: isFavorited ? "rgba(225,0,0,0.9)" : "rgba(123, 255, 119, 0.4)",
+                    backgroundColor: isFavorited
+                      ? "rgba(225,0,0,0.9)"
+                      : "rgba(123, 255, 119, 0.4)",
                     marginRight: "30px",
                   }}
                 />

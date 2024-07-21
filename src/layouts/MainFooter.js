@@ -3,9 +3,16 @@ import { Link, Typography } from "@mui/material";
 
 function MainFooter() {
   return (
-    <Typography variant="body2" color="secondary" align="center" p={1} mt={2}>
-      <Link color="inherit" href="https://github.com/mid9coward">
-        Hieu Vu
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      p={1}
+      mt={2}
+    >
+      {"Copyright © "}
+      <Link color="inherit" href="https://www.github.com/mid9coward">
+        hieupcmusic
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
