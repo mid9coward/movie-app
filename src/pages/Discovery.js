@@ -60,7 +60,7 @@ function DiscoveryPage() {
       </Grid>
       <Pagination
         size="large"
-        count={10}
+        count={45201}
         sx={{ display: "flex", justifyContent: "center", margin: "2rem" }}
         renderItem={(item) => (
           <PaginationItem
