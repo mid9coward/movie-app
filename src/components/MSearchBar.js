@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 
 const Search = styled("div")(({ theme }) => ({
+  display: "flex",
   position: "relative",
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
