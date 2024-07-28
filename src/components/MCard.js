@@ -14,7 +14,16 @@ import "../GlobalCss.css";
 export default function MCard({ item }) {
   // let location = useLocation();
   return (
-    <Card className="card" sx={{ width: 200, borderRadius: "3px" }}>
+    <Card
+      className="card"
+      sx={{
+        margin: "0 auto",
+        display: "flex",
+        justifyContent: "center",
+        width: 200,
+        borderRadius: "3px",
+      }}
+    >
       <CardActionArea LinkComponent={Link} to={`/movie/${item.id}`}>
         <Box
           display="flex"

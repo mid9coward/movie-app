@@ -38,7 +38,7 @@ function TrendingCardGroup({ trendingList, cutInitial, loadingTrending }) {
     <>
       <Stack
         flexDirection="row"
-        justifyContent="space-between"
+        justifyContent="center"
         alignItems="center"
         sx={{ flexWrap: "wrap" }} // Add this line for responsiveness
       >
