@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import PaginationItem from "@mui/material/PaginationItem";
 import Divider from "@mui/material/Divider";
 import Skeleton from "@mui/material/Skeleton";
+
 function TrendingCardGroup({ trendingList, cutInitial, loadingTrending }) {
   const [cutList, setCutList] = useState();
   const [copiedList, setcopiedList] = useState([]);
@@ -24,6 +25,7 @@ function TrendingCardGroup({ trendingList, cutInitial, loadingTrending }) {
     }
     return y;
   }
+
   const placeholder = [0, 1, 2, 3];
   const detailSkeleton = (
     <Stack spacing={1}>
@@ -31,12 +33,14 @@ function TrendingCardGroup({ trendingList, cutInitial, loadingTrending }) {
       <Skeleton variant="rectangular" width="100%" height={300} />
     </Stack>
   );
+
   return (
     <>
       <Stack
         flexDirection="row"
         justifyContent="space-between"
         alignItems="center"
+        sx={{ flexWrap: "wrap" }} // Add this line for responsiveness
       >
         <Typography variant="h5" my={3}>
           TRENDING
@@ -45,21 +49,21 @@ function TrendingCardGroup({ trendingList, cutInitial, loadingTrending }) {
         <PaginationItem onClick={() => setCutList(handleList())} type="next" />
       </Stack>
       <Divider />
-      <Grid container direction="row" spacing={5} mt={2}>
+      <Grid container direction="row" spacing={2} mt={2}>
         {loadingTrending
-          ? placeholder.map((item) => (
-              <Grid key={item.id} item xs={6} sm={4} md={3}>
+          ? placeholder.map((item, index) => (
+              <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
                 {detailSkeleton}
               </Grid>
             ))
           : cutList
           ? cutList.map((item) => (
-              <Grid key={item.id} item xs={6} sm={4} md={3}>
+              <Grid key={item.id} item xs={12} sm={6} md={4} lg={3}>
                 <MCard item={item} />
               </Grid>
             ))
           : cutInitial?.map((item) => (
-              <Grid key={item.id} item xs={6} sm={4} md={3}>
+              <Grid key={item.id} item xs={12} sm={6} md={4} lg={3}>
                 <MCard item={item} />
               </Grid>
             ))}
