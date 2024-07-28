@@ -94,7 +94,7 @@ export default function Category() {
         CATEGORY
       </Typography>
       <Divider />
-      <Stack flexDirection="row" width="100%" justifyContent="space-between">
+      <Stack flexDirection="row" width="100%" justifyContent="center">
         <Stack minWidth="150px" width={{ xs: "10%" }}>
           {/* Genres */}
           <Box>
